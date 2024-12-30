@@ -13,14 +13,10 @@
     background:white;
     border-bottom:white;
 }
-
 .types {
     display: flex;
     margin-left: 1px;
 }
-
-
-
 .text {
     width: 98%;
     min-height: 450px;
@@ -29,7 +25,6 @@
     padding:10px;
 
 }
-
 .active {
     display: block;
 }
