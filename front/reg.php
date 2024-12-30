@@ -22,10 +22,48 @@
         </tr>
         <tr>
             <td>
-                <input type="submit" value="註冊">
-                <input type="reset" value="清除">
+                <input type="button" value="註冊" onclick='reg()'>
+                <input type="button" value="清除" onclick='resetForm()'>
             </td>
             <td></td>
         </tr>
     </table>
 </fieldset>
+
+<script>
+function reg(){
+    let user={
+        acc:$("#acc").val(),
+        pw:$("#pw").val(),
+        pw2:$("#pw2").val(),
+        email:$("#email").val()
+    }
+
+    if(user.acc=="" || user.pw=="" || user.pw2=="" || user.email==""){
+        alert("不可空白");
+    }else if(user.pw!=user.pw2){
+        alert("密碼錯誤");
+    }else{
+        $.get("./api/chk_acc.php",{acc:user.acc},(res)=>{
+            console.log("chk acc => ",res)
+            if(parseInt(res)>0){
+                alert("帳號重複")
+            }else{
+                $.post("./api/reg.php",user,(res)=>{
+                    console.log("reg => ",res)
+                    if(parseInt(res)==1){
+                        alert("註冊完成，歡迎加入")
+                    }
+                })
+            }
+        })
+    }
+}
+
+function resetForm(){
+    $("#acc").val("")
+    $("#pw").val("")
+    $("#pw2").val("")
+    $("#email").val("")
+}
+</script>

@@ -162,7 +162,7 @@ function to($url){
 }
 
 $Total=new DB('total');
-
+$User=new DB('users');
 
 if(!isset($_SESSION['view'])){
     if($Total->count(['date'=>date("Y-m-d")])>0){
