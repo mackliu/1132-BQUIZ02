@@ -29,7 +29,14 @@
         $("#options").before(el)
     }
     function send(){
+        let subject=$("#subject").val()
+        let options=$("input[name='option[]']").map((id,item)=>$(item).val()).get()
+        //console.log(subject,options)
 
+        $.post("./api/add_que.php",{subject,options},(res)=>{
+            //console.log(res)
+            location.reload()
+        })
     }
     function resetForm(){
         $("input[type='text']").val("")
