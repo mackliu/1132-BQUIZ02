@@ -47,7 +47,7 @@
 					</div>
 					<span style="width:23%; display:inline-block;">
 						<?php if(!isset($_SESSION['user'])):?>
-						<a href="?do=login">會員登入</a>
+						<a href="index.php?do=login">會員登入</a>
 						<?php else:?>
 							歡迎,<?=$_SESSION['user'];?><br>
 							<button onclick="location.href='admin.php'">管理</button>|
