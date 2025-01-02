@@ -3,12 +3,12 @@
     <legend>新增問卷</legend>
     <table style="width:100%">
         <tr>
-            <td>問卷名稱</td>
+            <td class='clo'>問卷名稱</td>
             <td>
                 <input type="text" name="subject" id="subject" style="width:80%">
             </td>
         </tr>
-        <tr>
+        <tr class='clo'>
             <td colspan='2'>
                 <div id="options">
                     選項<input type="text" name="option[]" id=""  style="width:80%">
