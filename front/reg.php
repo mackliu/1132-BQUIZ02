@@ -45,12 +45,12 @@ function reg(){
         alert("密碼錯誤");
     }else{
         $.get("./api/chk_acc.php",{acc:user.acc},(res)=>{
-            console.log("chk acc => ",res)
+            //console.log("chk acc => ",res)
             if(parseInt(res)>0){
                 alert("帳號重複")
             }else{
                 $.post("./api/reg.php",user,(res)=>{
-                    console.log("reg => ",res)
+                    //console.log("reg => ",res)
                     if(parseInt(res)==1){
                         alert("註冊完成，歡迎加入")
                     }
