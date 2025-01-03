@@ -40,6 +40,8 @@
                 </span>
             </td>
             <td>
+                <?=$row['likes'];?>個人說
+                <img src="./icon/02B03.jpg" style="width:25px;">
                 <?php 
                 if(isset($_SESSION['user'])){
                     $chk=$Log->count(['news'=>$row['id'],'user'=>$_SESSION['user']]);
@@ -82,6 +84,7 @@ $(".like").on("click", function() {
                 $(this).text("讚");
                 break;
         }
+        location.reload();
     })
 })
 
