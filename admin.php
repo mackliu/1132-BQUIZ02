@@ -46,12 +46,14 @@
 						</marquee>
 					</div>
 					<span style="width:23%; display:inline-block;">
-						<?php if(!isset($_SESSION['user'])):?>
-						<a href="index.php?do=login">會員登入</a>
+					 	<?php if(!isset($_SESSION['user'])):?>
+							<a href="index.php?do=login">會員登入</a>
 						<?php else:?>
-							歡迎,<?=$_SESSION['user'];?><br>
-							<button onclick="location.href='admin.php'">管理</button>|
-							<button onclick="logout()">登出</button>
+							歡迎,<?=$_SESSION['user'];?>
+							<?php if($_SESSION['user']=='admin'):?>
+								<br><button onclick="location.href='admin.php'">管理</button>|
+							<?php endif;?>
+								<button onclick="logout()">登出</button>
 						<?php endif;?>
 					</span>
 				</div>
