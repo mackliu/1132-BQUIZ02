@@ -1,4 +1,17 @@
-
+<style>
+.detail {
+    background: rgba(51, 51, 51, 0.8);
+    color: #FFF;
+    height: 300px;
+    width: 400px;
+    position: absolute;
+    display: none;
+    left:10px;
+    top:10px;
+    z-index: 9999;
+    overflow: auto;
+}
+</style>
 <fieldset>
     <legend>目前位置：首頁 > 人氣文章區</legend>
     <table style="width: 100%;">
@@ -18,10 +31,13 @@
         foreach($rows as $row):
         ?>
         <tr>
-            <td><?=$row['title'];?></td>
-            <td>
+            <td class="row-title"><?=$row['title'];?></td>
+            <td style="position:relative;" class="row-content">
                 <span class='title'><?=mb_substr($row['news'],0,25);?>...</span>
-                <span class='detail'><?=nl2br($row['news']);?></span>
+                <span class='detail'>
+                    <h2 style="color:skyblue"><?=$News::$type[$row['type']];?></h2>
+                    <?=nl2br($row['news']);?>
+                </span>
             </td>
             <td>
                 <?php 
@@ -51,21 +67,41 @@
     </div>
 </fieldset>
 <script>
-    $(".like").on("click",function(){
-        let id=$(this).data('id');
-        let like=$(this).text();
+$(".like").on("click", function() {
+    let id = $(this).data('id');
+    let like = $(this).text();
 
-        $.post("./api/like.php",{id},()=>{
+    $.post("./api/like.php", {id}, 
+    () => {
 
-            switch(like){
-                case "讚":
-                    $(this).text("收回讚");
+        switch (like) {
+            case "讚":
+                $(this).text("收回讚");
                 break;
-                case "收回讚":
-                    $(this).text("讚");
+            case "收回讚":
+                $(this).text("讚");
                 break;
-            }
-        })
-    })    
+        }
+    })
+})
 
+$(".row-title").hover(
+    function(){
+        $(this).next().children(".detail").show();
+    },
+    function(){
+        $(this).next().children(".detail").hide();
+
+    }
+)
+
+$(".row-content").hover(
+    function(){
+        $(this).children(".detail").show();
+    },
+    function(){
+        $(this).children(".detail").hide();
+
+    }
+)
 </script>
